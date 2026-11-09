@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertodo/home.dart';
+import 'home.dart';
 
-void main() => runApp(MaterialApp(
-  home: Home(),
-  title: 'Todo List',
-));
+void main(){
+  return runApp(MaterialApp(
+    home: Home(),
+  ));
+}

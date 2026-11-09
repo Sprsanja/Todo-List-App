@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'Todo.dart';
-
-final TextEditingController textController = TextEditingController();
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -10,127 +7,60 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
-        leading: Builder(builder: (context) => IconButton(onPressed: (){
-          Scaffold.of(context).openDrawer();
-        }, icon: Icon(Icons.menu)))
-      ),
-      drawer: Drawer(
-        child: Column(
-          spacing: 5,
-          children: [
-          SizedBox(
-          width: double.infinity,
-          height: 80,
-            child: TextButton(
-              style: TextButton.styleFrom(
-                foregroundColor: Colors.black,
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(0))
-                ),
-                backgroundColor: Colors.blue,
-              ),
-                child: Text(
-                  'MENU',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30
-                  ),
-                ),
-                onPressed: (){
-                  Navigator.pop(context);
-                }),
-          ),
-            SizedBox(
-              width: double.infinity,
-              height: 50,
-              child: TextButton(onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Habits()));
-              },
-                style: TextButton.styleFrom(
-                  elevation: 50,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(0)))
-                ),
-              child: Row(
-                children: [
-                  Icon(Icons.add),
-                  Expanded(child: Padding(
-                    padding: EdgeInsets.only(right: 12, bottom: 4),
-                    child: Center(
-                      child: Text(
-                      'Habits',
-                        style: TextStyle(
-                          fontSize: 25,
-                          color: Colors.black,
-                        ),
-                      )
-                    ),
-                  )
-                  ),
-                ],
-              ),
-              ),
-              ),
-            SizedBox(
-              width: double.infinity,
-              height: 50,
-              child: TextButton(onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Todo()));
-              },
-                style: TextButton.styleFrom(
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(0)))
-                ),
-              child: Row(
-                children: [
-                  Icon(Icons.check),
-                  Expanded(child:
-                  Padding(padding: EdgeInsets.only(right: 12, bottom: 4),
-                      child: Center(
-                        child: Text(
-                          style: TextStyle(
-                            fontSize: 25,
-                            color: Colors.black,
-                          ),
-                          'Todo List'
-                        ),
-                      ),
-                  )
-                  )
-                ],
-              ),
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
-class Habits extends StatelessWidget {
-  const Habits({super.key});
+        centerTitle: true,
+        toolbarHeight: 80,
+        backgroundColor: Colors.black,
+        foregroundColor: Colors.white,
+        title: Text(
+          'HOME',
+          style: TextStyle(
+            fontWeight: FontWeight(1000),
+            fontSize: 30,
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Padding(
-          padding: EdgeInsets.only(left: 80),
-          child: Text(
-            'Habits',
-            style: TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-            ),
           ),
         ),
-        backgroundColor: Colors.blue,
-        leading: IconButton(onPressed: () {
-          Navigator.pop(context);
-        }, icon: Icon(Icons.undo)),
       ),
-      body: Center(
-        child: Text('This is the habit page'),
-      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(padding: const EdgeInsets.all(20)),
+          SizedBox(
+            height: 20,
+          ),
+          Container(
+            height: 200,
+            width: double.infinity,
+            color: Colors.grey,
+            
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Steps :',
+                  style: TextStyle(fontWeight: FontWeight(1000), fontSize: 20),
+                ),
+                Divider(thickness: 1, color: Colors.black,),
+
+                Text(
+                  'Water drank :',
+                  style: TextStyle(fontWeight: FontWeight(1000), fontSize: 20),
+
+                ),
+                Divider(thickness: 1,color: Colors.black,),
+
+                Text(
+                  'Task Complete :',
+                  style: TextStyle(fontWeight: FontWeight(1000), fontSize: 20),
+
+                ),
+                Divider(thickness: 1,color: Colors.black,
+    )
+  ]
+    )
+    )
+    ],
+      )
     );
+
   }
 }
