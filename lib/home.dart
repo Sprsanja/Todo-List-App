@@ -6,6 +6,9 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: Text('testing'),
+      ),
       appBar: AppBar(
         centerTitle: true,
         toolbarHeight: 80,
@@ -19,6 +22,9 @@ class Home extends StatelessWidget {
 
           ),
         ),
+        leading: Builder(builder: (context) => IconButton(onPressed: (){
+          Scaffold.of(context).openDrawer();
+        }, icon: Icon(Icons.menu))),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
