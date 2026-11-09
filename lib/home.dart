@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'Todo.dart';
+
+final TextEditingController textController = TextEditingController();
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -121,41 +124,12 @@ class Habits extends StatelessWidget {
           ),
         ),
         backgroundColor: Colors.blue,
-        leading: IconButton(onPressed: (){
+        leading: IconButton(onPressed: () {
           Navigator.pop(context);
         }, icon: Icon(Icons.undo)),
       ),
       body: Center(
         child: Text('This is the habit page'),
-      ),
-    );
-  }
-}
-
-class Todo extends StatelessWidget {
-  const Todo({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Padding(
-          padding: EdgeInsets.only(left: 80),
-          child: Text(
-            'Habits',
-            style: TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-        backgroundColor: Colors.blue,
-        leading: IconButton(onPressed: (){
-          Navigator.pop(context);
-        }, icon: Icon(Icons.undo)),
-      ),
-      body: Center(
-        child: Text('This is the Todo page'),
       ),
     );
   }
