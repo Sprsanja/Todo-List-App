@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'Drawer.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -6,6 +7,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.blue[500],
@@ -13,7 +15,9 @@ class Home extends StatelessWidget {
         toolbarHeight: 80,
         centerTitle: true,
         leading: Padding(padding: EdgeInsets.only(left: 10),
-        child: IconButton(onPressed: (){}, icon: Icon(Icons.menu)),
+          child: Builder(builder: (context) => IconButton(onPressed: (){
+            Scaffold.of(context).openDrawer();
+          }, icon: Icon(Icons.menu))),
         ),
         title: Text(
           'HOME',
@@ -23,6 +27,7 @@ class Home extends StatelessWidget {
           ),
         ),
       ),
+      drawer: MenuDrawer(),
       body:
 
       Column(
