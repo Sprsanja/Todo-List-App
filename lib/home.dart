@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'Drawer.dart';
+import 'Todo.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -65,7 +66,7 @@ class Taskbox extends StatefulWidget {
 class _TaskboxState extends State<Taskbox> {
   bool _isWalked = false;
   bool _drank = false;
-  bool _Homework = false;
+  bool _HomeWork = false;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -132,13 +133,13 @@ class _TaskboxState extends State<Taskbox> {
                   ),
                 ),
                 Spacer(),
-                Checkbox(value: _Homework,
+                Checkbox(value: _HomeWork,
                     side: BorderSide(color: Colors.white, width: 2),
                     checkColor: Colors.blue,
                     activeColor: Colors.white,
                     onChanged: (bool? newValue) {
                   setState(() {
-                    _Homework = newValue ?? false;
+                    _HomeWork = newValue ?? false;
                   });
                 })
               ],

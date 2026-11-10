@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'Todo.dart';
 
 class MenuDrawer extends StatelessWidget {
   const MenuDrawer({super.key});
@@ -10,21 +11,25 @@ class MenuDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           SizedBox(
-            height: 114.2,
-            child: (
-                DrawerHeader(
-                  decoration: BoxDecoration(color: Colors.blue,),
-                  child: Text(
-                    'Menu',
-                    style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight(1000)
-                    ),
-                  ),
-                )
+            height: 120,
+            child: DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue
+              ),
+              child: Text('MENU'),
             ),
-          )
-        ],
+          ),
+          TextButton(onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => Todolist()));
+          },
+            child: Row(
+              children: [
+                Text(
+                  'TODO',
+                ),
+              ],
+            ),)
+        ]
       ),
     );
   }
