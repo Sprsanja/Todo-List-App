@@ -6,66 +6,140 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-        child: Text('testing'),
-      ),
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        centerTitle: true,
-        toolbarHeight: 80,
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.blue[500],
         foregroundColor: Colors.white,
+        toolbarHeight: 80,
+        centerTitle: true,
+        leading: Padding(padding: EdgeInsets.only(left: 10),
+        child: IconButton(onPressed: (){}, icon: Icon(Icons.menu)),
+        ),
         title: Text(
           'HOME',
           style: TextStyle(
-            fontWeight: FontWeight(1000),
             fontSize: 30,
-
+            fontWeight: FontWeight(1000)
           ),
         ),
-        leading: Builder(builder: (context) => IconButton(onPressed: (){
-          Scaffold.of(context).openDrawer();
-        }, icon: Icon(Icons.menu))),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      body:
+
+      Column(
         children: [
-          Padding(padding: const EdgeInsets.all(20)),
-          SizedBox(
-            height: 20,
+          Row(
+            children: [
+              Padding(padding: EdgeInsets.all(10),
+                child: Text(
+                'DAILIES',
+                style: TextStyle(
+                  fontWeight: FontWeight(500),
+                  fontSize: 20,
+                ),
+              ),
+              ),
+              Spacer(),
+              IconButton(onPressed: (){}, icon: Icon(Icons.add),),
+
+            ],
           ),
-          Container(
-            height: 200,
-            width: double.infinity,
-            color: Colors.grey,
-            
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+          Divider(thickness: 3, color: Colors.black,),
+          const Taskbox(),
+          ],
+      ),
+    );
+  }
+}
+class Taskbox extends StatefulWidget {
+  const Taskbox({super.key});
+
+  @override
+  State<Taskbox> createState() => _TaskboxState();
+}
+
+class _TaskboxState extends State<Taskbox> {
+  bool _isWalked = false;
+  bool _drank = false;
+  bool _Homework = false;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        padding: EdgeInsets.all(15),
+        margin: EdgeInsets.all(20),
+        color: Colors.blue,
+        child: Column(
+          children: [
+            Row(
               children: [
                 Text(
-                  'Steps :',
-                  style: TextStyle(fontWeight: FontWeight(1000), fontSize: 20),
+                  'Walk 5Km : ',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight(1000),
+                    color: Colors.white,
+                  ),
                 ),
-                Divider(thickness: 1, color: Colors.black,),
-
+                Spacer(),
+                Checkbox(
+                  value: _isWalked,
+                  activeColor: Colors.white,
+                  checkColor: Colors.blue,
+                  side: const BorderSide(color: Colors.white, width: 2),
+                  onChanged: (bool? newValue) {
+                    setState(() {
+                      _isWalked = newValue ?? false;
+                    });
+                  },
+                )
+              ],
+            ),
+            Divider(thickness: 2, color: Colors.white,),
+            Row(
+              children: [
+                Text('Drink 3L : ',
+                  style: TextStyle(
+                    fontWeight: FontWeight(1000),
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                ),
+                Spacer(),
+                Checkbox(value: _drank,
+                    side: BorderSide(color: Colors.white, width: 2),
+                    activeColor: Colors.white,
+                    checkColor: Colors.blue,
+                    onChanged:(bool? newValue) {
+                  setState(() {
+                    _drank = newValue ?? false;
+                  });
+                })
+              ],
+            ),
+            Divider(thickness: 2, color: Colors.white,),
+            Row(
+              children: [
                 Text(
-                  'Water drank :',
-                  style: TextStyle(fontWeight: FontWeight(1000), fontSize: 20),
-
+                  'Home Work : ',
+                  style: TextStyle(
+                    fontWeight: FontWeight(1000),
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
                 ),
-                Divider(thickness: 1,color: Colors.black,),
-
-                Text(
-                  'Task Complete :',
-                  style: TextStyle(fontWeight: FontWeight(1000), fontSize: 20),
-
-                ),
-                Divider(thickness: 1,color: Colors.black,
-    )
-  ]
-    )
-    )
-    ],
-      )
+                Spacer(),
+                Checkbox(value: _Homework,
+                    side: BorderSide(color: Colors.white, width: 2),
+                    checkColor: Colors.blue,
+                    activeColor: Colors.white,
+                    onChanged: (bool? newValue) {
+                  setState(() {
+                    _Homework = newValue ?? false;
+                  });
+                })
+              ],
+            )
+        ]
+        )
     );
 
   }
